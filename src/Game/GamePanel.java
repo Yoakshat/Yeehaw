@@ -27,7 +27,7 @@ public class GamePanel extends JPanel {
 		enemy = new Enemy(bulletSprite);
 		cowboy = new Cowboy(cowboySprite, enemy);
 		
-		
+		requestFocus();
 		addKeyListener(new JumpDuck(cowboy));
 	}
 	
@@ -35,8 +35,8 @@ public class GamePanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		BufferedImage king = loadImage("/Attack (78x58).png", 78, 58, true);
-		g.drawImage(king,  500 - xOffset, 500, null);
+		// BufferedImage king = loadImage("/Attack (78x58).png", 78, 58, true);
+		// g.drawImage(king,  500 - xOffset, 500, null);
 		
 		cowboy.render(g);
 		cowboy.drawFloor(g);
