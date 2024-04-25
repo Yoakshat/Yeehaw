@@ -19,10 +19,13 @@ public class GamePanel extends JPanel {
 	private int xOffset = 0; 
 	private Cowboy cowboy;
 	private Enemy enemy; 
+	private MapGen map;
 	
 	public GamePanel() {
 		BufferedImage cowboySprite = loadImage("/cowboysmall.png", -1, -1, false);
 		BufferedImage bulletSprite = loadImage("/bullet.png", -1, -1, false);
+		// BufferedImage cloudSprite = loadImage("/cloud.png", -1, -1, false);
+		this.map = new MapGen(this);
 		
 		enemy = new Enemy(bulletSprite);
 		cowboy = new Cowboy(cowboySprite, enemy);
@@ -42,11 +45,11 @@ public class GamePanel extends JPanel {
 		cowboy.drawFloor(g);
 		
 		enemy.render(g);
-		
+		map.drawMap(g);
 		
 	}
 	
-	private BufferedImage loadImage(String path, int width, int height, boolean subimage) {
+	public BufferedImage loadImage(String path, int width, int height, boolean subimage) {
 		InputStream is = getClass().getResourceAsStream(path); 
 
 		try {
@@ -69,6 +72,7 @@ public class GamePanel extends JPanel {
 		xOffset += 1; 
 		cowboy.update();
 		enemy.update();
+		map.update();
 	}
 
 }

@@ -28,18 +28,23 @@ public class Motion {
 	protected boolean highlight = false; 
 
 	
-	
-	public Motion(double x, double y, int width, int height, BufferedImage sprite) {
+	public Motion(double x, double y, double scale, BufferedImage sprite) {
 		
 		this.x = x; 
 		this.y = y;
-		this.width = width; 
-		this.height = height; 
-		this.sprite = sprite;
 		
-		// the problem is the hitbox is not updating!
+		this.sprite = sprite;
+		if(sprite != null) {
+			this.width = (int)(sprite.getWidth() * scale);
+			this.height = (int)(sprite.getHeight() * scale);
+		}
+		
 		this.hitBox = new Collision(x, y, width, height);
 		
+	}
+	
+	public double getX() {
+		return this.x;
 	}
 	
 	public void highlight() {
@@ -109,7 +114,7 @@ public class Motion {
 			g.setColor(Color.red);
 		}
 		
-		g.drawRect((int)x, (int)y, width, height);
+		// g.drawRect((int)x, (int)y, width, height);
 		// reset
 		g.setColor(Color.black);
 	}

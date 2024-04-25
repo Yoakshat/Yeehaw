@@ -13,7 +13,7 @@ public class Cowboy extends Motion {
 	
 	
 	public Cowboy(BufferedImage cowboyFrames, Enemy enemy) {
-		super(100, 500, 64, 80, null);
+		super(100, 500, 1, null);
 		this.cowboyFrames = cowboyFrames;
 		this.sprite = getFrame(0);
 		this.enemy = enemy;
@@ -21,9 +21,9 @@ public class Cowboy extends Motion {
 	}
 	
 	private BufferedImage getFrame(int idx) {
-		int WIDTH = 75; 
-		int HEIGHT = 101;
-		return cowboyFrames.getSubimage(WIDTH*idx, 0, WIDTH, HEIGHT);
+		this.width = 75;
+		this.height = 101;
+		return cowboyFrames.getSubimage(width*idx, 0, width, height);
 	}
 	
 	public void update() {
