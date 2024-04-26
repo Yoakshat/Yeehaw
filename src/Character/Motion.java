@@ -47,6 +47,18 @@ public class Motion {
 		return this.x;
 	}
 	
+	public void setY(double y) {
+		this.y = y;
+	}
+	
+	public int getWidth() {
+		return this.width;
+	}
+	
+	public int getHeight() {
+		return this.height;
+	}
+	
 	public void highlight() {
 		highlight = true;
 	}
